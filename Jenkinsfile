@@ -5,25 +5,25 @@ pipeline {
   }
   stages {
     stage('build') {
-          bat './gradlew assembleDebug'
+          bat 'gradlew assembleDebug'
         }
     }
 
     stage('mobsf scan') {
       steps {
-        bat './gradlew scan'
+        bat 'gradlew scan'
       }
     }
 
     stage('mobsf check status') {
       steps {
-        bat './gradlew checkStatus'
+        bat 'gradlew checkStatus'
       }
     }
 
     stage('mobsf getReport') {
       steps {
-        bat './gradlew getReport'
+        bat 'gradlew getReport'
       }
     }
 
