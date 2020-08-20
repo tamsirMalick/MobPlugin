@@ -1,31 +1,29 @@
 pipeline {
   agent any
+  tools {
+    gradle 'gradle66'
+  }
   stages {
     stage('build') {
-      agent any
-      steps {
-        withGradle() {
-          sh './gradlew \'assembleDebug\''
+          bat './gradlew assembleDebug'
         }
-
-      }
     }
 
     stage('mobsf scan') {
       steps {
-        sh './gradlew \'scan\''
+        bat './gradlew scan'
       }
     }
 
     stage('mobsf check status') {
       steps {
-        sh './gradlew \'checkStatus\''
+        bat './gradlew checkStatus'
       }
     }
 
     stage('mobsf getReport') {
       steps {
-        sh './gradlew \'getReport\''
+        bat './gradlew getReport'
       }
     }
 
